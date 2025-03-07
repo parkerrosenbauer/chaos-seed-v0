@@ -8,7 +8,7 @@ import { ChaosSeed } from "./entities/chaos-seed.entity";
 import { Ability } from "./entities/ability.entity";
 import { Race } from "./entities/race.entity";
 import { StartingLocation } from "./entities/starting-location.entity";
-import { chaosSeedRouter } from "./chaos-seed/chaos-seed.router";
+import { chaosSeedRouter } from "./routes/chaos-seed.routes";
 
 // instantiate express app
 const app: Express = express();
@@ -29,6 +29,7 @@ export const AppDataSource = new DataSource({
   password: process.env.MYSQL_PASSWORD,
   database: process.env.MYSQL_DB,
   entities: [ChaosSeed, Race, Ability, StartingLocation],
+  entitySkipConstructor: true,
   synchronize: true,
 });
 
