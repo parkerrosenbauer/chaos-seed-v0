@@ -1,31 +1,24 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
 
 import { Randomizable } from "../interfaces/randomizable";
+import { Identifiable } from "../interfaces/identifiable";
 import { ChaosSeed } from "./chaos-seed.entity";
 
 @Entity()
-export class Race implements Randomizable {
-  @PrimaryGeneratedColumn("uuid")
-  id: string;
+export class Race implements Identifiable, Randomizable {
+  @PrimaryGeneratedColumn()
+  id: number;
 
-  @Column({
-    type: "text",
-  })
-  name: string;
+  @Column()
+  race: string;
 
-  @Column({
-    type: "longtext",
-  })
-  desc: string;
+  @Column("text")
+  info: string;
 
-  @Column({
-    type: "text",
-  })
+  @Column()
   startingLanguage: string;
 
-  @Column({
-    type: "int",
-  })
+  @Column()
   chance: number;
 
   @OneToMany(() => ChaosSeed, (chaosSeed) => chaosSeed.race)

@@ -1,24 +1,19 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
+import { Identifiable } from "../interfaces/identifiable";
 import { Randomizable } from "../interfaces/randomizable";
 
 @Entity()
-export class Ability implements Randomizable {
-  @PrimaryGeneratedColumn("uuid")
-  id: string;
+export class Ability implements Identifiable, Randomizable {
+  @PrimaryGeneratedColumn()
+  id: number;
 
-  @Column({
-    type: "text",
-  })
-  name: string;
+  @Column()
+  ability: string;
 
-  @Column({
-    type: "longtext",
-  })
-  desc: string;
+  @Column("text")
+  info: string;
 
-  @Column({
-    type: "int",
-  })
+  @Column()
   chance: number;
 }

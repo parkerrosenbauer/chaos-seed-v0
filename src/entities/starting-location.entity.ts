@@ -1,31 +1,24 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
 
 import { Randomizable } from "../interfaces/randomizable";
+import { Identifiable } from "../interfaces/identifiable";
 import { ChaosSeed } from "./chaos-seed.entity";
 
 @Entity()
-export class StartingLocation implements Randomizable {
-  @PrimaryGeneratedColumn("uuid")
-  id: string;
+export class StartingLocation implements Identifiable, Randomizable {
+  @PrimaryGeneratedColumn()
+  id: number;
 
-  @Column({
-    type: "text",
-  })
+  @Column()
   generalLocation: string;
 
-  @Column({
-    type: "text",
-  })
+  @Column()
   specificLocation: string;
 
-  @Column({
-    type: "bool",
-  })
+  @Column()
   isDeadly: boolean;
 
-  @Column({
-    type: "int",
-  })
+  @Column()
   chance: number;
 
   @OneToMany(() => ChaosSeed, (chaosSeed) => chaosSeed.startingLocation)
