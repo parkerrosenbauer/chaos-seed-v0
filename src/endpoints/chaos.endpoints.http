@@ -1,0 +1,28 @@
+### generate random location
+GET http://localhost:3200/random-starting-location
+Content-Type: application/json
+
+### create new chaos seed
+POST http://localhost:3200/chaos-seed
+Content-Type: application/json
+
+{
+    "id": 1,
+    "firstName": "Heman8008"
+}
+
+### track dead on arrival chaos seed
+POST http://localhost:3200/track-death
+Content-Type: application/json
+
+{
+    "id": 3
+}
+
+### get chaos seed by id
+GET http://localhost:3200/chaos-seed
+Content-Type: application/json
+
+{
+    "id": 1
+}
